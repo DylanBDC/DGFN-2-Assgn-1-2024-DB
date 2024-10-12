@@ -1,41 +1,7 @@
-'''
-TPRG 2131 Fall 202* Assignment 1
-Sept, 202*
-Phil J <philip.jarvis@durhamcollege>
-
-Use this template as the start
-
-*********
-A/V calculator
-
-(Level 0)
-Enter Q/q to quit – select either will gracefully close the application and cancel the calculated view option.
-Enter V/v to change the calculated view or D/d for default view.
-
-	(Level 1)
-    1.	First Area/Volume* calulation
-    2.	Second Area/Volume* calculation
-    3.	Third Area/Volume* calculation
-    4.	Fourth Area/Volume* calculation
-    5.	Fifth Area/Volume* calculation
-
-*********
-
-The above menu style (inside the asterix's) is expected, only 2 key entries to use the calculator.
-
-The menu Level 1 , options 1...5 should be modified from the above to reflect the
-function you selected.
-
-After selection at level 1, the calculator expects data to entered (use appropiate data types).
-
-(The Level 0 & 1 labels are for indication purpose and are not
-to be included)
-
-'''
 
 # Dylan Brett (100933134)
 # TPRG-2131-02
-# Oct 10, 2024
+# Oct 12, 2024
 # This program is strictly my own work. Any material
 # beyond course learning materials that is taken from
 # the Web or other sources is properly cited, giving
@@ -44,36 +10,26 @@ to be included)
 
 import math
 
-# for the v/V and d/D part i would like to try and use classes to select which option to display (try and create a class for each calc function to pick calculated view or default)
+   
+def selected_mode(mode): #this function determines if v or d was selected (try adding try and except later)
+      
+    if (mode == 'v'):#
+        mode='v'
+    else:
+        mode='d'
+    return mode # returns the value of mode to the selected_mode function
 
-class Mode: # this class handles switching between the calculated and default views
-    def __init__(self):
-        self.mode = 'd' # start off setting the mode to the default view
-    
-    def selected_mode(self, mode): #this function determines if v or d was selected (try adding try and except later)(not working yet)
+def circle_area(mode): # this function calculates the area of a circle
+    radius=input("what is the radius? ")
+    radius_float=float(radius)
+    area= math.pi * radius_float**2 # calculation came from my brain
+    area_rounded= round(area, 1) # rounds the result to one decimal place   
+    if mode == 'v':
+        print(f'equation result: \u03C0 * {radius}^2 = {area_rounded}m^2  (\u03C0 * r^2 = z)')# Display formula and result
         
-        if (mode == 'v'):
-            self.mode='v'
-        else:
-            self.mode='d'
-        return self.mode
-        
-
-class Circle_a:
-    
-    def __init__(self, mode):
-        self.mode = mode  # Mode is passed when creating the Circle object
-
-    def circle_area(self): # this function calculates the area of a circle
-        radius=input("what is the radius? ")
-        area= math.pi * radius**2 # calculation came from my brain
-        
-        if self.mode.selected_mode(self.mode.mode) == 'v':
-            print('equation')
-            #return "display the full equation"  # Display formula and result
-        else:
-            print('default view')
-            #return area  # Only display result
+    else:
+        print(f'default result: \u03C0 * {radius}^2 = {area_rounded}m^2')# Only display result
+         
         
 
     
@@ -98,17 +54,19 @@ class Circle_v():
         print("circle volume calc")
 
 
+def main(): # function for the main program to be used with pytest
+    
+    mode = 'd' # start off the display in the default view
 
-mode=Mode()
-while True:
-    print('''
+    while True: # main loop of the program
+        print('''
     A/V calculator
 
-(Level 0)
+
 Enter Q/q to quit – select either will gracefully close the application and cancel the calculated view option.
 Enter V/v to change the calculated view or D/d for default view.
 
-	(Level 1)
+	
     1.	Area of a circle calulation
     2.	Area of a rectangle calculation
     3.	Volume of a cylinder calculation
@@ -116,41 +74,42 @@ Enter V/v to change the calculated view or D/d for default view.
     5.	Fifth Area/Volume* calculation''')
     
     
-    level_0_1 = input("level 0 and 1 input section: ")
+        level_0_1 = input("Please provide an input: ")
     
-    if (level_0_1.lower()=='q'):
-        exit('thanks for using this calculator')
+        if (level_0_1.lower()=='q'):
+            exit('thanks for using this calculator') # when q is entered the program exits with an exit message
         
-    elif (level_0_1.lower()=='v'):
-        #mode=Mode()
-        mode.selected_mode('v')
-        print('\nEquation View')
+        elif (level_0_1.lower()=='v'):
+            selected_mode('v') # sends v to the function selected_mode
+            print('\nEquation View')
         
     
-    elif (level_0_1.lower()=='d'):
-        #mode=Mode()
-        mode.selected_mode('d') 
-        print('\nDefault View')
+        elif (level_0_1.lower()=='d'):
+            selected_mode('d') # sends d to the function selected_mode
+            print('\nDefault View')
         
-    elif (level_0_1=='1'):
-        #mode=Mode()
-        circle = Circle_a(mode)
-        circle.circle_area()
-        print('1')
+        elif (level_0_1=='1'):
+            circle_area(mode)
+            #print('1')
     
-    elif (level_0_1=='2'):
-        print('2')
+        elif (level_0_1=='2'):
+            print('2')
         
-    elif (level_0_1=='3'):
-        print('3')
+        elif (level_0_1=='3'):
+            print('3')
         
-    elif (level_0_1=='4'):
-        print('4')
+        elif (level_0_1=='4'):
+            print('4')
         
-    elif (level_0_1=='5'):
-        print('5')
-    
+        elif (level_0_1=='5'):
+            print('5')
+
+if __name__ == "__main__": # to be used with pytest
+    main()    
    
+    
+    
+    
     
     
     
