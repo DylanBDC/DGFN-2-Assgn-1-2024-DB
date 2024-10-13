@@ -57,7 +57,7 @@ def cylinder_volume(mode):
 def triangle_area(mode):
     base=float(input("what is the length of the base of the triangle? "))
     base_height=float(input("what is the height of the base of the triangle? "))
-    area= (0.5) * (base) * (base_height) # calculation came from my brain
+    area= (0.5) * (base) * (base_height)
     area_rounded= round(area, 1) # rounds the result to one decimal place   
     
     if mode == 'v':
@@ -66,15 +66,20 @@ def triangle_area(mode):
         print(f'\ndefault result: 0.5 * {base} * {base_height} = {area_rounded}')# Only display result
 
 
-
-
-def circle_volume():
-    print("circle volume calc")
+def sphere_volume(mode):
+    radius=float(input("what is the radius of the sphere? "))
+    volume= (4/3) * ((math.pi) * (radius**3))
+    volume_rounded= round(volume, 1) # rounds the result to one decimal place   
+    
+    if mode == 'v':
+        print(f'\nequation result: 4/3 * (\u03C0 * {radius}) = {volume_rounded}  ( 4/3 * (\u03C0 * radius) = volume )')# Display formula and result  
+    else:
+        print(f'\ndefault result: 4/3 * (\u03C0 * {radius}) = {volume_rounded}')# Only display result
 
 
 def main(): # function for the main program to be used with pytest
     
-    #mode = 'd' # start off the display in the default view
+    mode = 'd' # start off the display in the default view
 
     while True: # main loop of the program
         print('''
@@ -89,7 +94,7 @@ Enter V/v to change the calculated view or D/d for default view.
     2.	Area of a rectangle calculation
     3.	Volume of a cylinder calculation
     4.	Area of a triangle calculation
-    5.	Fifth Area/Volume* calculation''')
+    5.	Volume of a sphere calculation''')
     
     
         level_0_1 = input("Please provide an input: ")
@@ -123,7 +128,8 @@ Enter V/v to change the calculated view or D/d for default view.
             #print('4')
         
         elif (level_0_1=='5'):
-            print('5')
+            sphere_volume(mode)
+            #print('5')
 
 if __name__ == "__main__": # to be used with pytest
     main()
