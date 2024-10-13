@@ -1,4 +1,3 @@
-
 # Dylan Brett (100933134)
 # TPRG-2131-02
 # Oct 12, 2024
@@ -20,38 +19,37 @@ def selected_mode(mode): #this function determines if v or d was selected (try a
     return mode # returns the value of mode to the selected_mode function
 
 def circle_area(mode): # this function calculates the area of a circle
-    radius=input("what is the radius? ")
-    radius_float=float(radius)
-    area= math.pi * radius_float**2 # calculation came from my brain
+    radius=float(input("what is the radius? "))
+    #radius_float=float(radius)
+    area= math.pi * radius**2 # calculation came from my brain
     area_rounded= round(area, 1) # rounds the result to one decimal place   
     if mode == 'v':
-        print(f'equation result: \u03C0 * {radius}^2 = {area_rounded}m^2  (\u03C0 * r^2 = z)')# Display formula and result
+        print(f'equation result: \u03C0 * {radius}^2 = {area_rounded}m^2  (\u03C0 * r^2 = area)')# Display formula and result
         
     else:
         print(f'default result: \u03C0 * {radius}^2 = {area_rounded}m^2')# Only display result
-         
+
+def rectangle_area(mode):
+    length=float(input("what is the length of the rectangle? "))
+    width=float(input("what is the width of the rectangle? "))
+    #radius_float=float(radius)
+    area= length * width # calculation came from my brain
+    area_rounded= round(area, 1) # rounds the result to one decimal place   
+    if mode == 'v':
+        print(f'equation result: {length} * {width} = {area_rounded}  (length * width = area)')# Display formula and result
         
+    else:
+        print(f'default result: {length} * {width} = {area_rounded}')# Only display result
 
-    
-class Rectangle():
+def cylinder_volume():
+    print("cylinder calc")
 
-    def rectangle_area():
-        print("rectangle calc")
+def triangle_area():
+    print("triangle calc")
 
-class Cylinder():
+def circle_volume():
+    print("circle volume calc")
 
-    def cylinder_volume():
-        print("cylinder calc")
-
-class Triangle():
-
-    def triangle_area():
-        print("triangle calc")
-
-class Circle_v():
-
-    def circle_volume():
-        print("circle volume calc")
 
 
 def main(): # function for the main program to be used with pytest
@@ -93,6 +91,7 @@ Enter V/v to change the calculated view or D/d for default view.
             #print('1')
     
         elif (level_0_1=='2'):
+            rectangle_area(mode)
             print('2')
         
         elif (level_0_1=='3'):
@@ -105,7 +104,7 @@ Enter V/v to change the calculated view or D/d for default view.
             print('5')
 
 if __name__ == "__main__": # to be used with pytest
-    main()    
+    main()
    
     
     
