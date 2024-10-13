@@ -19,20 +19,21 @@ def selected_mode(mode): #this function determines if v or d was selected (try a
     return mode # returns the value of mode to the selected_mode function
 
 
-def circle_area(mode): # this function calculates the area of a circle
-    radius=float(input("what is the radius? "))
+def circle_area(mode, radius): # this function calculates the area of a circle
+    #radius=float(input("what is the radius? "))
     area= (math.pi) * (radius**2) # calculation came from my brain
     area_rounded= round(area, 1) # rounds the result to one decimal place   
     
     if mode == 'v':
-        print(f'\nequation result: \u03C0 * {radius}^2 = {area_rounded}m^2  (\u03C0 * r^2 = area)')# Display formula and result 
+        print(f'\nequation result: \u03C0 * {radius}^2 = {area_rounded}m^2  (\u03C0 * r^2 = area)')# Display formula and result
     else:
         print(f'\ndefault result: \u03C0 * {radius}^2 = {area_rounded}m^2')# Only display result
+    return area # return the value to the function to be tested in pytest
          
         
-def rectangle_area(mode):
-    length=float(input("what is the length of the rectangle? "))
-    width=float(input("what is the width of the rectangle? "))
+def rectangle_area(mode, length, width):
+#     length=float(input("what is the length of the rectangle? "))
+#     width=float(input("what is the width of the rectangle? "))
     area= (length) * (width) # calculation came from my brain
     area_rounded= round(area, 1) # rounds the result to one decimal place   
     
@@ -40,11 +41,12 @@ def rectangle_area(mode):
         print(f'\nequation result: {length} * {width} = {area_rounded}  (length * width = area)')# Display formula and result
     else:
         print(f'\ndefault result: {length} * {width} = {area_rounded}')# Only display result
+    return area # return the value to the function to be tested in pytest
 
 
-def cylinder_volume(mode):
-    radius=float(input("what is the radius of the cylinder? "))
-    height=float(input("what is the height of the cylinder? "))
+def cylinder_volume(mode, radius, height):
+#     radius=float(input("what is the radius of the cylinder? "))
+#     height=float(input("what is the height of the cylinder? "))
     volume= (math.pi) * (radius**2) * (height) # calculation came from my brain
     volume_rounded= round(volume, 1) # rounds the result to one decimal place   
     
@@ -52,34 +54,37 @@ def cylinder_volume(mode):
         print(f'\nequation result: \u03C0 * {radius}^2 * {height} = {volume_rounded}  (\u03C0 * radius^2 * height = volume)')# Display formula and result
     else:
         print(f'\ndefault result: \u03C0 * {radius}^2 * {height} = {volume_rounded}')# Only display result
+    return volume # return the value to the function to be tested in pytest
 
 
-def triangle_area(mode):
-    base=float(input("what is the length of the base of the triangle? "))
-    base_height=float(input("what is the height of the base of the triangle? "))
+def triangle_area(mode, base, base_height):
+#     base=float(input("what is the length of the base of the triangle? "))
+#     base_height=float(input("what is the height of the base of the triangle? "))
     area= (0.5) * (base) * (base_height)
     area_rounded= round(area, 1) # rounds the result to one decimal place   
     
     if mode == 'v':
-        print(f'\nequation result: 0.5 * {base} * {base_height} = {area_rounded}  ( 0.5 * base * base_height = area )')# Display formula and result  
+        print(f'\nequation result: 0.5 * {base} * {base_height} = {area_rounded}  ( 0.5 * base * base_height = area )')# Display formula and result
     else:
         print(f'\ndefault result: 0.5 * {base} * {base_height} = {area_rounded}')# Only display result
+    return area # return the value to the function to be tested in pytest
 
 
-def sphere_volume(mode):
-    radius=float(input("what is the radius of the sphere? "))
+def sphere_volume(mode, radius):
+#     radius=float(input("what is the radius of the sphere? "))
     volume= (4/3) * ((math.pi) * (radius**3))
     volume_rounded= round(volume, 1) # rounds the result to one decimal place   
     
     if mode == 'v':
-        print(f'\nequation result: 4/3 * (\u03C0 * {radius}) = {volume_rounded}  ( 4/3 * (\u03C0 * radius) = volume )')# Display formula and result  
+        print(f'\nequation result: 4/3 * (\u03C0 * {radius}) = {volume_rounded}  ( 4/3 * (\u03C0 * radius) = volume )')# Display formula and result
     else:
         print(f'\ndefault result: 4/3 * (\u03C0 * {radius}) = {volume_rounded}')# Only display result
+    return volume # return the value to the function to be tested in pytest
 
 
 def main(): # function for the main program to be used with pytest
     
-    mode = 'd' # start off the display in the default view
+    mode = 'd' # start off the display in the default view (outside of the loop so it doesnt reset to d every time)
 
     while True: # main loop of the program
         print('''
@@ -112,23 +117,31 @@ Enter V/v to change the calculated view or D/d for default view.
             print('\nDefault View')
         
         elif (level_0_1=='1'):
-            circle_area(mode)
+            radius=float(input("what is the radius? "))
+            circle_area(mode, radius)
             #print('1')
     
         elif (level_0_1=='2'):
-            rectangle_area(mode)
+            length=float(input("what is the length of the rectangle? "))
+            width=float(input("what is the width of the rectangle? "))
+            rectangle_area(mode, length, width)
             #print('2')
         
         elif (level_0_1=='3'):
-            cylinder_volume(mode)
+            radius=float(input("what is the radius of the cylinder? "))
+            height=float(input("what is the height of the cylinder? "))
+            cylinder_volume(mode, radius, height)
             #print('3')
         
         elif (level_0_1=='4'):
-            triangle_area(mode)
+            base=float(input("what is the length of the base of the triangle? "))
+            base_height=float(input("what is the height of the base of the triangle? "))
+            triangle_area(mode, base, base_height)
             #print('4')
         
         elif (level_0_1=='5'):
-            sphere_volume(mode)
+            radius=float(input("what is the radius of the sphere? "))
+            sphere_volume(mode, radius)
             #print('5')
 
 if __name__ == "__main__": # to be used with pytest
