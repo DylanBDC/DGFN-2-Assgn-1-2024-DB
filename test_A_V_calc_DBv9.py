@@ -1,17 +1,5 @@
-'''
-TPRG 2131 Fall 202x Assignment 1, Test file template.
-Sept, 202x
-Phil J <philip.jarvis@durhamcollege>
 
-
-This file is to be the test_A_V_calc.py file to be used with your A_V_calc.py and pytest.
-This must test each of your Area/Volume functions, with a least 3 examples for each of the
-5 functions your chose to use.
-
-As this stands it will NOT work with your A_V_calc.py file.
-'''
-
-
+#def rectangle_area():
 # Dylan Brett (100933134)
 # TPRG-2131-02
 # Oct 13, 2024
@@ -31,8 +19,11 @@ from A_V_calc_DBv9 import circle_area, rectangle_area, cylinder_volume, triangle
 def test_circle_area(): # this function tests the function circle_area in the main program
     assert circle_area('d', 5) == 78.5 # passes the mode and radius and checks to see if the rounded calculation is the same
     assert circle_area('v', 10) == 314.2 # passes the ,ode v and checks a different radius value
+    assert circle_area('d', 2.2) == 15.2
 
-
-#def rectangle_area():
+def test_rectangle_area():
+    assert rectangle_area('d', 5, 10) == 50
+    assert rectangle_area('v', 7, 10) == 70
+    assert rectangle_area('d', 1.1, 2.3) == 2.5
 
 
