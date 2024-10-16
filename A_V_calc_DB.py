@@ -131,9 +131,9 @@ def main(): # mainguard (blocks pytest from running this function)
         
         elif (level_0_1=='5'):
             radius=float(input("what is the radius of the sphere? "))
-            sphere_volume(mode, radius)
+            sphere_volume(mode, radius) # calls the function with the arguments mode, radius
 
-if __name__ == "__main__": # mainguard (blocks pytest from running this function)
+if __name__ == "__main__": # mainguard (blocks pytest from running this function)(but runs the function if in correct file)
     main()
    
     
