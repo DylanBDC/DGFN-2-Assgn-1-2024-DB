@@ -12,7 +12,7 @@
 
 
 import pytest # imports the pytest module
-from A_V_calc_DBv9 import circle_area, rectangle_area, cylinder_volume, triangle_area, sphere_volume # imports the different functions from A_V_calc_DBv9
+from A_V_calc_DB import circle_area, rectangle_area, cylinder_volume, triangle_area, sphere_volume # imports the different functions from A_V_calc_DBv9
 
 
 def test_circle_area(): # this function tests the function circle_area in the main program
